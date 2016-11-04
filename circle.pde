@@ -1,22 +1,11 @@
 public class Circle {
-  private color SQ;
-  float x, y, h, w, xSpeed, ySpeed;
-
-
-
-  public Circle(color temp, int xTemp, int yTemp, int hTemp, int wTemp, int xSpeedh, int ySpeedh) {
-    SQ = temp;
-    x = xTemp;
-    y = yTemp;
-    h = hTemp;
-    w = wTemp;
-    xSpeed = xSpeedh;
-    ySpeed = ySpeedh;
-    x = random(500);
-    y = random(500);
-    xSpeed = random(10);
-    ySpeed = random(10);
-  }
+  private color SQ = color(random(255), random(255), random(255), random(255));
+  float x = random(width);
+  float y = random(height);
+  float h = random(5, 50) ;
+  float w = h ;
+  float xSpeed = random(10);
+  float ySpeed = random(10);
 
 
   public void draw() {
@@ -29,21 +18,21 @@ public class Circle {
 
 
   public void bounce() {
-    if (x>= width || x<=0 ) {
-
+    if (x>= width || x<=0 ) { 
       xSpeed = -xSpeed;
-      ellipse(x, y, w, h);
+      SQ = color(random(255), random(255), random(255), random(255));
     }
-    if (y>=height || y<=0) {
+    if (y>=height || y<=0) { 
       ySpeed = -ySpeed;
-      ellipse(x, y, w, h);
+      SQ = color(random(255), random(255), random(255), random(255));
     }
   }
 
 
-  public void setStuff() {
-    float temp = random(5, 150);
-    this.w = temp;
-    this.h = temp;
+  public void changeSizeRandomly() {
+    this.w = random(5, 150);
+    this.h = this.w;      
+    xSpeed = -xSpeed;
+    ySpeed = -ySpeed;
   }
 }
